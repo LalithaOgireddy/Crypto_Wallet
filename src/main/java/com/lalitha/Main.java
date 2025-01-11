@@ -11,6 +11,7 @@ import com.lalitha.service.TxnManagement;
 import com.lalitha.service.WalletManagement;
 import com.lalitha.service.impl.TxnManagementImpl;
 import com.lalitha.service.impl.WalletManagementImpl;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.math.BigDecimal;
 
@@ -19,10 +20,10 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
 
-        WalletDao walletDao = new WalletDaoImpl();
-        WalletManagement walletManagement = new WalletManagementImpl(walletDao);
-        TransactionDao transactionDao = new TransactionDaoImpl();
-        TxnManagement txnManagement = new TxnManagementImpl(walletDao,transactionDao);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("AppConfig.class");
+
+        WalletManagement walletManagement = context.getBean(WalletManagement.class);
+        TxnManagement txnManagement = context.getBean(TxnManagement.class);
 
         Wallet my_wallet = walletManagement.createWallet("My Wallet");
         Transaction myFirstTxn = txnManagement.createDepositTransaction(
