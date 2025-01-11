@@ -9,25 +9,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan(basePackages = "com.lexicon")
 public class AppConfig {
 
-    @Bean
-    public WalletDaoImpl walletDao(){
-        return new WalletDaoImpl();
-    }
 
-    @Bean
-    public TransactionDaoImpl transactionDao(){
-        return new TransactionDaoImpl();
-    }
-
-    @Bean
-    public WalletManagementImpl walletManagement(){
-        return new WalletManagementImpl(walletDao());
-    }
-
-    @Bean
-    public TxnManagementImpl txnManagement(){
-        return new TxnManagementImpl(walletDao(),transactionDao());
-    }
 }

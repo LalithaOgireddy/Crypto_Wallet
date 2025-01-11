@@ -7,15 +7,19 @@ import com.lalitha.model.CryptoCurrency;
 import com.lalitha.model.Transaction;
 import com.lalitha.model.Wallet;
 import com.lalitha.service.TxnManagement;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class TxnManagementImpl implements TxnManagement {
     private final WalletDao walletDao;
     private final TransactionDao transactionDao;
 
+    @Autowired //Dependency Injection
     public TxnManagementImpl(WalletDao walletDao, TransactionDao transactionDao) {
         this.walletDao = walletDao;
         this.transactionDao = transactionDao;

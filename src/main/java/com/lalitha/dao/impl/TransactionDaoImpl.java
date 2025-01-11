@@ -2,11 +2,13 @@ package com.lalitha.dao.impl;
 
 import com.lalitha.dao.TransactionDao;
 import com.lalitha.model.Transaction;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class TransactionDaoImpl implements TransactionDao {
 
     List<Transaction> storage ;
