@@ -1,9 +1,6 @@
 package com.lalitha;
 
-import com.lalitha.dao.TransactionDao;
-import com.lalitha.dao.WalletDao;
-import com.lalitha.dao.impl.TransactionDaoImpl;
-import com.lalitha.dao.impl.WalletDaoImpl;
+import com.lalitha.config.AppConfig;
 import com.lalitha.model.CryptoCurrency;
 import com.lalitha.model.Transaction;
 import com.lalitha.model.Wallet;
@@ -20,10 +17,10 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("AppConfig.class");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        WalletManagement walletManagement = context.getBean(WalletManagement.class);
-        TxnManagement txnManagement = context.getBean(TxnManagement.class);
+        WalletManagement walletManagement = context.getBean(WalletManagementImpl.class);
+        TxnManagement txnManagement = context.getBean(TxnManagementImpl.class);
 
         Wallet my_wallet = walletManagement.createWallet("My Wallet");
         Transaction myFirstTxn = txnManagement.createDepositTransaction(

@@ -13,7 +13,7 @@ import java.util.Optional;
 @Component
 public class WalletManagementImpl implements WalletManagement {
 
-    private WalletDao walletDao;
+    private final WalletDao walletDao;
 
     @Autowired
     public WalletManagementImpl(WalletDao walletDao) {
